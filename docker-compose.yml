@@ -1,0 +1,39 @@
+version: '3.3'
+
+networks:
+  commons-app:
+    driver: bridge
+
+services:
+  cassandra-db-orders:
+    image: cassandra
+    restart: always
+    container_name: cassandra-db-orders
+    environment:
+      CASSANDRA_CLUSTER_NAME: "MyCassandraCluster"
+    ports:
+      - "9042:9042"
+    volumes:
+      - ./data/cassandra:/var/lib/cassandra
+    networks:
+      - commons-app
+  adapter-rest-orders:
+    build:
+      context: adapter-db
+      dockerfile: adapter-rest/Dockerfile
+    restart: always
+    container_name: adapter-rest-orders
+    environment:
+      - DB_URL=jdbc:postgresql://cassandra-db-orders:5432/postgres?currentSchema=public
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+    ports:
+      - "8052:8052"
+    networks:
+      - commons-app
+    depends_on:
+      - cassandra-db-orders
+
+volumes:
+  data:
+    external: true
