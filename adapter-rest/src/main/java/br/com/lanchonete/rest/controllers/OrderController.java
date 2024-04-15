@@ -98,7 +98,7 @@ public class OrderController {
     @Operation(summary = "Atualiza o status do pedido")
     @Counted(value = "execution.count.updateStatusOrder")
     @Timed(value = "execution.time.updateStatusOrder", longTask = true)
-    @PatchMapping(value = "/{id}/status/{status}")
+    @PutMapping(value = "/{id}/status/{status}")
     public void updateStatusOrder(@PathVariable UUID id, @PathVariable StatusType status) throws APIException {
         try {
             updateStatusOrderUsecase.updateStatusOrder(id, status);

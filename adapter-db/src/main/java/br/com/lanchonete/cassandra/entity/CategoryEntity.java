@@ -20,6 +20,7 @@ import java.util.UUID;
 public class CategoryEntity {
 
     @Id
+    @GeneratedValue
     @Column(columnDefinition = "uuid")
     private UUID id;
     @CreatedDate
@@ -27,7 +28,9 @@ public class CategoryEntity {
     private Date createdAt;
     @LastModifiedDate
     private Date updatedAt;
-    @Column(length = 50, nullable = false, unique = true)
+    @Column(columnDefinition = "uuid")
+    private UUID catalogCategoryId;
+    @Column(length = 50, nullable = false)
     private String name;
 
 }

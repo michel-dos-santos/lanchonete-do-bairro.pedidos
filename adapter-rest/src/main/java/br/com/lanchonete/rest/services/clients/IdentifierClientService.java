@@ -26,6 +26,8 @@ public class IdentifierClientService implements IdentifierClientRepository {
         logRepository.info(IdentifierClientService.class, LogCode.LogCodeInfo._0032);
         ResponseDTO clientById = serviceFeignClient.getClientById(id);
         Client client = modelMapper.map(clientById, Client.class);
+        client.setId(null);
+        client.setClientId(id);
         logRepository.info(IdentifierClientService.class, LogCode.LogCodeInfo._0033);
         return client;
     }

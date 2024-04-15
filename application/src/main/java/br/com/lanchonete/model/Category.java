@@ -5,6 +5,7 @@ import java.util.UUID;
 public class Category {
 
     private UUID id;
+    private UUID catalogCategoryId;
     private String name;
 
     public UUID getId() {
@@ -23,4 +24,11 @@ public class Category {
         this.name = name;
     }
 
+    public UUID getCatalogCategoryId() {
+        return catalogCategoryId;
+    }
+
+    public void setCatalogCategoryId(UUID catalogCategoryId) {
+        this.catalogCategoryId = catalogCategoryId;
+    }
 }

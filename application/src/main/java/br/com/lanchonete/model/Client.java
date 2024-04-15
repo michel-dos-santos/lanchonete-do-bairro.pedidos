@@ -5,6 +5,7 @@ import java.util.UUID;
 public class Client {
 
     private UUID id;
+    private UUID clientId;
     private String name;
     private String cpf;
     private String email;
@@ -41,4 +42,11 @@ public class Client {
         this.email = email;
     }
 
+    public UUID getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(UUID clientId) {
+        this.clientId = clientId;
+    }
 }

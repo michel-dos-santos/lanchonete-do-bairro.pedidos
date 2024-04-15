@@ -26,6 +26,10 @@ public class IdentifierProductService implements IdentifierProductRepository {
         logRepository.info(IdentifierProductService.class, LogCode.LogCodeInfo._0032);
         ResponseProductDTO productById = serviceFeignClient.getProductById(id);
         Product product = modelMapper.map(productById, Product.class);
+        product.setCatalogProductId(id);
+        product.setId(null);
+        product.getCategory().setCatalogCategoryId(product.getCategory().getId());
+        product.getCategory().setId(null);
         logRepository.info(IdentifierProductService.class, LogCode.LogCodeInfo._0033);
         return product;
     }
