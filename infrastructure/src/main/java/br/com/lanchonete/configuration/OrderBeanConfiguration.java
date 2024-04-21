@@ -1,6 +1,5 @@
 package br.com.lanchonete.configuration;
 
-import br.com.lanchonete.port.repository.ClientRepository;
 import br.com.lanchonete.port.repository.LogRepository;
 import br.com.lanchonete.port.repository.OrderRepository;
 import br.com.lanchonete.port.usecase.billing.GenerateBilling;
@@ -13,8 +12,8 @@ import org.springframework.context.annotation.Configuration;
 public class OrderBeanConfiguration {
 
     @Bean
-    CheckoutOrderUsecase checkoutOrder(LogRepository logRepository, OrderRepository orderRepository, ValidateCheckoutOrder validateCheckoutOrder, GenerateBilling generateBilling, ClientRepository clientRepository) {
-        return new CheckoutOrderUsecase(logRepository, orderRepository, validateCheckoutOrder, generateBilling, clientRepository);
+    CheckoutOrderUsecase checkoutOrder(LogRepository logRepository, OrderRepository orderRepository, ValidateCheckoutOrder validateCheckoutOrder, GenerateBilling generateBilling) {
+        return new CheckoutOrderUsecase(logRepository, orderRepository, validateCheckoutOrder, generateBilling);
     }
     @Bean
     ValidateCheckoutOrderUsecase validateCheckoutOrder(LogRepository logRepository, OrderRepository orderRepository) {

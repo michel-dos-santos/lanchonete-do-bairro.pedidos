@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class RequestDTO {
 
-    private String billingOrderId;
+    private String orderId;
     private BigDecimal totalPrice;
     private BillingFormType billingFormType;
 

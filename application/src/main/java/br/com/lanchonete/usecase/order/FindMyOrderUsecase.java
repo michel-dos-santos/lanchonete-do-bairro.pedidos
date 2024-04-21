@@ -19,9 +19,9 @@ public class FindMyOrderUsecase implements FindMyOrder {
     }
 
     @Override
-    public Order findMyOrder(UUID id) {
+    public Order findMyOrder(UUID externalId) {
         logRepository.info(FindMyOrderUsecase.class, LogCode.LogCodeInfo._0038);
-        Order order = orderRepository.findById(id);
+        Order order = orderRepository.findByExternalId(externalId);
         logRepository.info(FindMyOrderUsecase.class, LogCode.LogCodeInfo._0039);
         return order;
     }

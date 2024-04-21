@@ -5,16 +5,30 @@ networks:
     driver: bridge
 
 services:
-  cassandra-db-orders:
-    image: cassandra
+  mongo-db-orders:
+    image: mongo
     restart: always
-    container_name: cassandra-db-orders
-    environment:
-      CASSANDRA_CLUSTER_NAME: "MyCassandraCluster"
+    container_name: mongo-db-orders
     ports:
-      - "9042:9042"
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
     volumes:
-      - ./data/cassandra:/var/lib/cassandra
+      - ./data/mongodb:/data/db
+    networks:
+      - commons-app
+  mongo-express:
+    image: mongo-express
+    restart: always
+    container_name: mongo-express-orders
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo-db-orders:27017/
+      ME_CONFIG_BASICAUTH: false
     networks:
       - commons-app
   adapter-rest-orders:
@@ -24,15 +38,15 @@ services:
     restart: always
     container_name: adapter-rest-orders
     environment:
-      - DB_URL=jdbc:postgresql://cassandra-db-orders:5432/postgres?currentSchema=public
-      - DB_USER=postgres
-      - DB_PASSWORD=postgres
+      - DB_URL=jdbc:mongodb://mongo-db-orders:27017/
+      - DB_USER=root
+      - DB_PASSWORD=example
     ports:
       - "8052:8052"
     networks:
       - commons-app
     depends_on:
-      - cassandra-db-orders
+      - mongo-db-orders
 
 volumes:
   data:

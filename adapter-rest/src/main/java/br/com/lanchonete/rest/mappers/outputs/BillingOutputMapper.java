@@ -6,15 +6,17 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.UUID;
+
 @Component
 public class BillingOutputMapper {
 
     @Autowired
     private ModelMapper modelMapper;
 
-    public RequestDTO mapBillingRequestDTOFromBilling(Billing billing) {
+    public RequestDTO mapBillingRequestDTOFromBilling(Billing billing, UUID orderId) {
         RequestDTO requestDTO = modelMapper.map(billing, RequestDTO.class);
-        requestDTO.setBillingOrderId(billing.getId().toString());
+        requestDTO.setOrderId(orderId.toString());
         return requestDTO;
     }
 

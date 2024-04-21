@@ -6,7 +6,8 @@ import java.util.UUID;
 
 public class Order {
 
-    private UUID id;
+    private String id;
+    private UUID externalId;
     private Date createdAt;
     private Date updatedAt;
     private Integer number;
@@ -15,11 +16,11 @@ public class Order {
     private Billing billing;
     private List<OrderItem> orderItems;
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -77,5 +78,13 @@ public class Order {
 
     public void setOrderItems(List<OrderItem> orderItems) {
         this.orderItems = orderItems;
+    }
+
+    public UUID getExternalId() {
+        return externalId;
+    }
+
+    public void setExternalId(UUID externalId) {
+        this.externalId = externalId;
     }
 }

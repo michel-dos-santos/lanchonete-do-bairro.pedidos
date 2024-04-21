@@ -14,7 +14,6 @@ public class MyOrderOutputDTO {
     private UUID id;
     private String number;
     private StatusType status;
-    private UUID billingOrderId;
     private List<MyOrderItems> orderItems;
 
 }

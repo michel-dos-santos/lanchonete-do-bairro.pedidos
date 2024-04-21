@@ -1,6 +1,5 @@
 package br.com.lanchonete.configuration;
 
-import br.com.lanchonete.port.repository.BillingRepository;
 import br.com.lanchonete.port.repository.LogRepository;
 import br.com.lanchonete.port.repository.NotifyBillingHubRepository;
 import br.com.lanchonete.port.repository.OrderRepository;
@@ -15,8 +14,8 @@ import org.springframework.context.annotation.Configuration;
 public class BillingBeanConfiguration {
 
     @Bean
-    GenerateBillingUsecase generateBilling(LogRepository logRepository, BillingRepository billingRepository, NotifyBillingHub notifyBillingHub) {
-        return new GenerateBillingUsecase(logRepository, billingRepository, notifyBillingHub);
+    GenerateBillingUsecase generateBilling(LogRepository logRepository, NotifyBillingHub notifyBillingHub) {
+        return new GenerateBillingUsecase(logRepository, notifyBillingHub);
     }
 
     @Bean
@@ -25,8 +24,8 @@ public class BillingBeanConfiguration {
     }
 
     @Bean
-    UpdateBillingByHubUsecase updateBillingByHub(LogRepository logRepository, BillingRepository billingRepository, OrderRepository orderRepository) {
-        return new UpdateBillingByHubUsecase(logRepository, billingRepository, orderRepository);
+    UpdateBillingByHubUsecase updateBillingByHub(LogRepository logRepository, OrderRepository orderRepository) {
+        return new UpdateBillingByHubUsecase(logRepository, orderRepository);
     }
 
 }

@@ -6,6 +6,6 @@ import java.util.UUID;
 
 public interface UpdateBillingByHub {
 
-    void updateStatusPaymentType(StatusPaymentType statusPaymentType, UUID id);
+    void updateStatusPaymentType(StatusPaymentType statusPaymentType, UUID externalId);
 
 }

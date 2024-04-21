@@ -1,6 +1,7 @@
 package br.com.lanchonete.port.repository;
 
 import br.com.lanchonete.model.Order;
+import br.com.lanchonete.model.StatusPaymentType;
 import br.com.lanchonete.model.StatusType;
 
 import java.util.List;
@@ -11,14 +12,16 @@ public interface OrderRepository {
     Order checkout(Order order);
     List<Order> findAllOrdersByStatus(StatusType statusType);
 
-    Order updateStatus(UUID id, StatusType statusType);
+    Order updateStatus(String id, StatusType statusType);
 
-    Order findById(UUID id);
+    Order findById(String id);
 
-    Order findByBillingId(UUID id);
+    Order findByExternalId(UUID externalId);
 
     Order save(Order order);
 
     List<Order> listOrdersMonitor();
+
+    Order updateStatusPaymentType(UUID externalId, StatusPaymentType status);
 
 }

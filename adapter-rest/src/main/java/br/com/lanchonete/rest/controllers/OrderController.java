@@ -85,10 +85,10 @@ public class OrderController {
     @Operation(summary = "Consulta os dados do pedido")
     @Counted(value = "execution.count.findMyOrder")
     @Timed(value = "execution.time.findMyOrder", longTask = true)
-    @GetMapping(value = "/{id}")
-    public MyOrderOutputDTO findMyOrder(@PathVariable UUID id) throws APIException {
+    @GetMapping(value = "/{externalId}")
+    public MyOrderOutputDTO findMyOrder(@PathVariable UUID externalId) throws APIException {
         try {
-            return orderOutputMapper.mapMyOrderOutputDTOFromOrder(findMyOrderUsecase.findMyOrder(id));
+            return orderOutputMapper.mapMyOrderOutputDTOFromOrder(findMyOrderUsecase.findMyOrder(externalId));
         } catch (Exception e) {
             throw APIException.internalError("Erro interno", Collections.singletonList(e.getMessage()));
         }
@@ -98,10 +98,10 @@ public class OrderController {
     @Operation(summary = "Atualiza o status do pedido")
     @Counted(value = "execution.count.updateStatusOrder")
     @Timed(value = "execution.time.updateStatusOrder", longTask = true)
-    @PutMapping(value = "/{id}/status/{status}")
-    public void updateStatusOrder(@PathVariable UUID id, @PathVariable StatusType status) throws APIException {
+    @PutMapping(value = "/{externalId}/status/{status}")
+    public void updateStatusOrder(@PathVariable UUID externalId, @PathVariable StatusType status) throws APIException {
         try {
-            updateStatusOrderUsecase.updateStatusOrder(id, status);
+            updateStatusOrderUsecase.updateStatusOrder(externalId, status);
         } catch (Exception e) {
             throw APIException.internalError("Erro interno", Collections.singletonList(e.getMessage()));
         }
@@ -111,10 +111,10 @@ public class OrderController {
     @Operation(summary = "Atualiza o status de pagamento do pedido")
     @Counted(value = "execution.count.updateStatusPaymentOrder")
     @Timed(value = "execution.time.updateStatusPaymentOrder", longTask = true)
-    @PutMapping(value = "/{billingOrderId}/status-payment/{status}")
-    public void updateStatusOrder(@PathVariable UUID billingOrderId, @PathVariable StatusPaymentType status) throws APIException {
+    @PutMapping(value = "/{externalId}/status-payment/{status}")
+    public void updateStatusOrder(@PathVariable UUID externalId, @PathVariable StatusPaymentType status) throws APIException {
         try {
-            updateBillingByHubUsecase.updateStatusPaymentType(status, billingOrderId);
+            updateBillingByHubUsecase.updateStatusPaymentType(status, externalId);
         } catch (Exception e) {
             throw APIException.internalError("Erro interno", Collections.singletonList(e.getMessage()));
         }

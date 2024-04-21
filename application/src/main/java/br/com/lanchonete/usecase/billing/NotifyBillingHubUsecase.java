@@ -6,6 +6,8 @@ import br.com.lanchonete.port.repository.LogRepository;
 import br.com.lanchonete.port.repository.NotifyBillingHubRepository;
 import br.com.lanchonete.port.usecase.billing.NotifyBillingHub;
 
+import java.util.UUID;
+
 public class NotifyBillingHubUsecase implements NotifyBillingHub {
 
     private final LogRepository logRepository;
@@ -17,9 +19,9 @@ public class NotifyBillingHubUsecase implements NotifyBillingHub {
     }
 
     @Override
-    public void notify(Billing billing) {
+    public void notify(Billing billing, UUID orderId) {
         logRepository.info(NotifyBillingHubUsecase.class, LogCode.LogCodeInfo._0028);
-        billingHubRepository.sendNotification(billing);
+        billingHubRepository.sendNotification(billing, orderId);
         logRepository.info(NotifyBillingHubUsecase.class, LogCode.LogCodeInfo._0029);
     }
 

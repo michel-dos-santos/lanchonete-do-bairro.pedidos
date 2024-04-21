@@ -6,6 +6,6 @@ import java.util.UUID;
 
 public interface FindMyOrder {
 
-    Order findMyOrder(UUID id);
+    Order findMyOrder(UUID externalId);
 
 }

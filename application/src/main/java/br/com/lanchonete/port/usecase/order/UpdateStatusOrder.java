@@ -6,6 +6,6 @@ import java.util.UUID;
 
 public interface UpdateStatusOrder {
 
-    void updateStatusOrder(UUID id, StatusType statusType);
+    void updateStatusOrder(UUID externalId, StatusType statusType);
 
 }

@@ -6,7 +6,6 @@ import java.util.UUID;
 public class Product {
 
     private UUID id;
-    private UUID catalogProductId;
     private String name;
     private BigDecimal unitPrice;
     private Category category;
@@ -50,13 +49,5 @@ public class Product {
 
     public void setStatus(StatusActiveType status) {
         this.status = status;
-    }
-
-    public UUID getCatalogProductId() {
-        return catalogProductId;
-    }
-
-    public void setCatalogProductId(UUID catalogProductId) {
-        this.catalogProductId = catalogProductId;
     }
 }

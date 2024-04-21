@@ -41,4 +41,5 @@ public class Billing {
     public void setBillingFormType(BillingFormType billingFormType) {
         this.billingFormType = billingFormType;
     }
+
 }

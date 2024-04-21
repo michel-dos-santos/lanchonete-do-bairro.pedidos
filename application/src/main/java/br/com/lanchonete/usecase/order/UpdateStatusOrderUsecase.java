@@ -21,9 +21,9 @@ public class UpdateStatusOrderUsecase implements UpdateStatusOrder {
     }
 
     @Override
-    public void updateStatusOrder(UUID id, StatusType statusType) {
+    public void updateStatusOrder(UUID externalId, StatusType statusType) {
         logRepository.info(UpdateStatusOrderUsecase.class, LogCode.LogCodeInfo._0042);
-        Order order = orderRepository.findById(id);
+        Order order = orderRepository.findByExternalId(externalId);
         Map<StatusType, List<StatusType>> mapStatusAccepted = Map.ofEntries(
                 new AbstractMap.SimpleEntry<>(StatusType.RECEIVED, Arrays.asList(StatusType.IN_BILLING, StatusType.IN_PREPARATION, StatusType.READY, StatusType.FINISHED)),
                 new AbstractMap.SimpleEntry<>(StatusType.IN_BILLING, Arrays.asList(StatusType.IN_PREPARATION, StatusType.READY, StatusType.FINISHED)),

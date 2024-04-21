@@ -9,6 +9,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.UUID;
+
 @Component
 public class NotifyBillingRepository implements NotifyBillingHubRepository {
 
@@ -22,9 +24,9 @@ public class NotifyBillingRepository implements NotifyBillingHubRepository {
     private BillingOutputMapper billingOutputMapper;
 
     @Override
-    public void sendNotification(Billing billing) {
+    public void sendNotification(Billing billing, UUID orderId) {
         logRepository.info(NotifyBillingRepository.class, LogCode.LogCodeInfo._0032);
-        serviceFeignClient.billing(billingOutputMapper.mapBillingRequestDTOFromBilling(billing));
+        serviceFeignClient.billing(billingOutputMapper.mapBillingRequestDTOFromBilling(billing, orderId));
         logRepository.info(NotifyBillingRepository.class, LogCode.LogCodeInfo._0033);
     }
 
