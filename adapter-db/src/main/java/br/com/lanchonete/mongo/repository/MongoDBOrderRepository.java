@@ -91,7 +91,7 @@ public class MongoDBOrderRepository implements OrderRepository {
                         br.com.lanchonete.mongo.entity.StatusType.IN_PREPARATION,
                         br.com.lanchonete.mongo.entity.StatusType.RECEIVED
                 ),
-                Sort.by(Sort.Direction.ASC, "createdAt") //TODO AJUSTAR PARA A ORDENAÇÃO FICAR CORRETA
+                Sort.by(Sort.Direction.ASC, "createdAt").and(Sort.by(Sort.Direction.DESC, "status"))
         );
         Type type = new TypeToken<List<Order>>() {}.getType();
         return modelMapper.map(orderEntityList, type);
