@@ -14,7 +14,7 @@
     <artifactId>lanchonete-do-bairro.pedidos</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
-    <name>lanchonete-do-bairro</name>
+    <name>lanchonete-do-bairro.pedidos</name>
     <description>Projeto destinado a lanchonete do bairro</description>
 
     <modules>
@@ -30,9 +30,11 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <sonar.projectKey>michel-dos-santos_lanchonete-do-bairro-postech-fiap</sonar.projectKey>
-        <sonar.organization>michel-dos-santos</sonar.organization>
+        <sonar.projectKey>michel-dos-santos_lanchonete-do-bairro.pedidos</sonar.projectKey>
+        <sonar.organization>lanchonete-do-bairro-postech-fiap</sonar.organization>
         <sonar.moduleKey>${project.groupId}:${project.artifactId}</sonar.moduleKey>
+        <sonar.scm.disabled>true</sonar.scm.disabled>
+        <sonar.token>23f6f3bc9ff06211edda7d1f97cf4b7569eeeef8</sonar.token>
     </properties>
 
     <dependencies>

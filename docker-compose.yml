@@ -12,8 +12,8 @@ services:
     ports:
       - 27017:27017
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+      - MONGO_INITDB_ROOT_USERNAME=${DB_USER_ORDERS}
+      - MONGO_INITDB_ROOT_PASSWORD=${DB_PASSWORD_ORDERS}
     volumes:
       - ./data/mongodb:/data/db
     networks:
@@ -25,24 +25,29 @@ services:
     ports:
       - 8081:8081
     environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: example
-      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo-db-orders:27017/
-      ME_CONFIG_BASICAUTH: false
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=${DB_USER_ORDERS}
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=${DB_PASSWORD_ORDERS}
+      - ME_CONFIG_MONGODB_URL=mongodb://${DB_USER_ORDERS}:${DB_PASSWORD_ORDERS}@mongo-db-orders:27017/
+      - ME_CONFIG_BASICAUTH=false
     networks:
       - commons-app
   adapter-rest-orders:
     build:
-      context: adapter-db
+      context: .
       dockerfile: adapter-rest/Dockerfile
     restart: always
     container_name: adapter-rest-orders
     environment:
-      - DB_URL=jdbc:mongodb://mongo-db-orders:27017/
-      - DB_USER=root
-      - DB_PASSWORD=example
+      - DB_HOST=${DB_HOST_ORDERS}
+      - DB_PORT=${DB_PORT_ORDERS}
+      - DB_NAME=${DB_DATABASE_ORDERS}
+      - DB_USER=${DB_USER_ORDERS}
+      - DB_PASSWORD=${DB_PASSWORD_ORDERS}
+      - API_BILLING_URL=${API_BILLING_URL}
+      - API_CLIENTS_URL=${API_CLIENTS_URL}
+      - API_PRODUCTS_URL=${API_PRODUCTS_URL}
     ports:
-      - "8052:8052"
+      - "8012:8012"
     networks:
       - commons-app
     depends_on:
