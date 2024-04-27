@@ -18,7 +18,7 @@ services:
       - ./data/mongodb:/data/db
     networks:
       - commons-app
-  mongo-express:
+  mongo-express-orders:
     image: mongo-express
     restart: always
     container_name: mongo-express-orders
@@ -52,6 +52,8 @@ services:
       - commons-app
     depends_on:
       - mongo-db-orders
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 volumes:
   data:
