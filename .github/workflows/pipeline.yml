@@ -100,18 +100,17 @@ jobs:
           repository: michel-dos-santos/lanchonete-do-bairro.infra-k8s
           path: './infra'
 
-#      - name: "🚀 Deploy image to Amazon EKS"
-#        run: |
-#          kubectl delete secret dynamic-secrets \
-#            --ignore-not-found \
-#            && kubectl create secret generic dynamic-secrets \
-#            --from-literal=AWS_ACCESS_KEY='${{ secrets.AWS_ACCESS_KEY }}' \
-#            --from-literal=PROFILE='${{ secrets.PROFILE }}' \
-#            --from-literal=AWS_ACCESS_SECRET='${{ secrets.AWS_ACCESS_SECRET }}' \
-#            --from-literal=AWS_REGION='${{ secrets.AWS_REGION }}' \
-#            --from-literal=AWS_COGNITO_CLIENT_ID='${{ secrets.AWS_COGNITO_CLIENT_ID }}' \
-#            --from-literal=AWS_COGNITO_USER_POOL_ID='${{ secrets.AWS_COGNITO_USER_POOL_ID }}' \
-#            --from-literal=DB_URL='${{ secrets.DB_URL }}' \
-#            --from-literal=DB_USER='${{ secrets.DB_USER }}' \
-#            --from-literal=DB_PASSWORD='${{ secrets.DB_PASSWORD }}' \
-#            && kubectl apply -f ./infra/src/k8s --validate=false
+      - name: "🚀 Deploy image to Amazon EKS"
+        run: |
+          kubectl delete secret dynamic-secrets-pedidos \
+            --ignore-not-found \
+            && kubectl create secret generic dynamic-secrets-pedidos \
+            --from-literal=DB_HOST='${{ secrets.DB_HOST }}' \
+            --from-literal=DB_PORT='${{ secrets.DB_PORT }}' \
+            --from-literal=DB_DATABASE='${{ secrets.DB_DATABASE }}' \
+            --from-literal=DB_USER='${{ secrets.DB_USER }}' \
+            --from-literal=DB_PASSWORD='${{ secrets.DB_PASSWORD }}' \
+            --from-literal=API_BILLING_URL='${{ secrets.API_BILLING_URL }}' \
+            --from-literal=API_CLIENTS_URL='${{ secrets.API_CLIENTS_URL }}' \
+            --from-literal=API_PRODUCTS_URL='${{ secrets.API_PRODUCTS_URL }}' \
+            && kubectl apply -f ./infra/src/k8s/orders --validate=false
