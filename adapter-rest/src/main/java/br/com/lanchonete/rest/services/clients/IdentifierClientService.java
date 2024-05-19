@@ -23,10 +23,10 @@ public class IdentifierClientService implements IdentifierClientRepository {
 
     @Override
     public Client identifierById(UUID id) {
-        logRepository.info(IdentifierClientService.class, LogCode.LogCodeInfo._0032);
+        logRepository.info(IdentifierClientService.class, LogCode.LogCodeInfo._0011);
         ResponseDTO clientById = serviceFeignClient.getClientById(id);
         Client client = modelMapper.map(clientById, Client.class);
-        logRepository.info(IdentifierClientService.class, LogCode.LogCodeInfo._0033);
+        logRepository.info(IdentifierClientService.class, LogCode.LogCodeInfo._0012);
         return client;
     }
 }

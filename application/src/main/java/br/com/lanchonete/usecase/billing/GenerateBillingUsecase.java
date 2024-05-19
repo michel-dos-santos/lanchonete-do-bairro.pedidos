@@ -21,11 +21,11 @@ public class GenerateBillingUsecase implements GenerateBilling {
 
     @Override
     public Billing generate(Billing billing, UUID orderId) {
-        logRepository.info(GenerateBillingUsecase.class, LogCode.LogCodeInfo._0024);
+        logRepository.info(GenerateBillingUsecase.class, LogCode.LogCodeInfo._0005);
         billing.setStatus(StatusPaymentType.PENDING);
         billing.setId(UUID.randomUUID());
         notifyBillingHub.notify(billing, orderId);
-        logRepository.info(GenerateBillingUsecase.class, LogCode.LogCodeInfo._0025);
+        logRepository.info(GenerateBillingUsecase.class, LogCode.LogCodeInfo._0006);
         return billing;
     }
 }

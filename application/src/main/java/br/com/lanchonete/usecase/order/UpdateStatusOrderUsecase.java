@@ -22,7 +22,7 @@ public class UpdateStatusOrderUsecase implements UpdateStatusOrder {
 
     @Override
     public void updateStatusOrder(UUID externalId, StatusType statusType) {
-        logRepository.info(UpdateStatusOrderUsecase.class, LogCode.LogCodeInfo._0042);
+        logRepository.info(UpdateStatusOrderUsecase.class, LogCode.LogCodeInfo._0017);
         Order order = orderRepository.findByExternalId(externalId);
         Map<StatusType, List<StatusType>> mapStatusAccepted = Map.ofEntries(
                 new AbstractMap.SimpleEntry<>(StatusType.RECEIVED, Arrays.asList(StatusType.IN_BILLING, StatusType.IN_PREPARATION, StatusType.READY, StatusType.FINISHED)),
@@ -38,6 +38,6 @@ public class UpdateStatusOrderUsecase implements UpdateStatusOrder {
 
         order.setStatus(statusType);
         orderRepository.save(order);
-        logRepository.info(UpdateStatusOrderUsecase.class, LogCode.LogCodeInfo._0043);
+        logRepository.info(UpdateStatusOrderUsecase.class, LogCode.LogCodeInfo._0018);
     }
 }

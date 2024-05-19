@@ -20,9 +20,9 @@ public class ListOrdersMonitorUsecase implements ListOrdersMonitor {
 
     @Override
     public List<Order> listOrdersMonitor() {
-        logRepository.info(ListOrdersMonitorUsecase.class, LogCode.LogCodeInfo._0044);
+        logRepository.info(ListOrdersMonitorUsecase.class, LogCode.LogCodeInfo._0019);
         List<Order> orders = orderRepository.listOrdersMonitor();
-        logRepository.info(ListOrdersMonitorUsecase.class, LogCode.LogCodeInfo._0045);
+        logRepository.info(ListOrdersMonitorUsecase.class, LogCode.LogCodeInfo._0020);
         return orders;
     }
 }

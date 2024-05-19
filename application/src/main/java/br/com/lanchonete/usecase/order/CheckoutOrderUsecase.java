@@ -27,7 +27,7 @@ public class CheckoutOrderUsecase implements CheckoutOrder {
 
     @Override
     public Order checkout(Order order) {
-        logRepository.info(CheckoutOrderUsecase.class, LogCode.LogCodeInfo._0022);
+        logRepository.info(CheckoutOrderUsecase.class, LogCode.LogCodeInfo._0003);
         order.setStatus(StatusType.RECEIVED);
         order.setExternalId(UUID.randomUUID());
         validateCheckoutOrder.validate(order);
@@ -36,7 +36,7 @@ public class CheckoutOrderUsecase implements CheckoutOrder {
         Order orderCheckout = orderRepository.checkout(order);
 
         orderRepository.updateStatus(orderCheckout.getId(), StatusType.IN_BILLING);
-        logRepository.info(CheckoutOrderUsecase.class, LogCode.LogCodeInfo._0023);
+        logRepository.info(CheckoutOrderUsecase.class, LogCode.LogCodeInfo._0004);
         return orderCheckout;
     }
 }

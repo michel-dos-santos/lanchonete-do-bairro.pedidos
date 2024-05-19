@@ -20,9 +20,9 @@ public class NotifyBillingHubUsecase implements NotifyBillingHub {
 
     @Override
     public void notify(Billing billing, UUID orderId) {
-        logRepository.info(NotifyBillingHubUsecase.class, LogCode.LogCodeInfo._0028);
+        logRepository.info(NotifyBillingHubUsecase.class, LogCode.LogCodeInfo._0009);
         billingHubRepository.sendNotification(billing, orderId);
-        logRepository.info(NotifyBillingHubUsecase.class, LogCode.LogCodeInfo._0029);
+        logRepository.info(NotifyBillingHubUsecase.class, LogCode.LogCodeInfo._0010);
     }
 
 }

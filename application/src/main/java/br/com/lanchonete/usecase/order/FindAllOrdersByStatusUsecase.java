@@ -21,9 +21,9 @@ public class FindAllOrdersByStatusUsecase implements FindAllOrdersByStatus {
 
     @Override
     public List<Order> findAll(StatusType statusType) {
-        logRepository.info(FindAllOrdersByStatusUsecase.class, LogCode.LogCodeInfo._0026);
+        logRepository.info(FindAllOrdersByStatusUsecase.class, LogCode.LogCodeInfo._0007);
         List<Order> orders = orderRepository.findAllOrdersByStatus(statusType);
-        logRepository.info(FindAllOrdersByStatusUsecase.class, LogCode.LogCodeInfo._0027);
+        logRepository.info(FindAllOrdersByStatusUsecase.class, LogCode.LogCodeInfo._0008);
         return orders;
     }
 }

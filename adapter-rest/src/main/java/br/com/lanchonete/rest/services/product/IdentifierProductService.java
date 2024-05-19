@@ -23,10 +23,10 @@ public class IdentifierProductService implements IdentifierProductRepository {
 
     @Override
     public Product identifierById(UUID id) {
-        logRepository.info(IdentifierProductService.class, LogCode.LogCodeInfo._0032);
+        logRepository.info(IdentifierProductService.class, LogCode.LogCodeInfo._0011);
         ResponseProductDTO productById = serviceFeignClient.getProductById(id);
         Product product = modelMapper.map(productById, Product.class);
-        logRepository.info(IdentifierProductService.class, LogCode.LogCodeInfo._0033);
+        logRepository.info(IdentifierProductService.class, LogCode.LogCodeInfo._0012);
         return product;
     }
 }

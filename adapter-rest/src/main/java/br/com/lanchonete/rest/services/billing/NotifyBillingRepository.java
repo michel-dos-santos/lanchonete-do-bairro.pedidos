@@ -25,9 +25,9 @@ public class NotifyBillingRepository implements NotifyBillingHubRepository {
 
     @Override
     public void sendNotification(Billing billing, UUID orderId) {
-        logRepository.info(NotifyBillingRepository.class, LogCode.LogCodeInfo._0032);
+        logRepository.info(NotifyBillingRepository.class, LogCode.LogCodeInfo._0011);
         serviceFeignClient.billing(billingOutputMapper.mapBillingRequestDTOFromBilling(billing, orderId));
-        logRepository.info(NotifyBillingRepository.class, LogCode.LogCodeInfo._0033);
+        logRepository.info(NotifyBillingRepository.class, LogCode.LogCodeInfo._0012);
     }
 
 }

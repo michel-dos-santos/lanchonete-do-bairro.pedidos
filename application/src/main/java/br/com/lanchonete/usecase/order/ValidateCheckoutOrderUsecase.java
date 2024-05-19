@@ -22,7 +22,7 @@ public class ValidateCheckoutOrderUsecase implements ValidateCheckoutOrder {
 
     @Override
     public void validate(Order order) {
-        logRepository.info(ValidateCheckoutOrderUsecase.class, LogCode.LogCodeInfo._0021);
+        logRepository.info(ValidateCheckoutOrderUsecase.class, LogCode.LogCodeInfo._0002);
 
         if (Objects.isNull(order)) {
             throw new OrderNotInformedException();

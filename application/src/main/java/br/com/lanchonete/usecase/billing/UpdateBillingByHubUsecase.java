@@ -22,7 +22,7 @@ public class UpdateBillingByHubUsecase implements UpdateBillingByHub {
 
     @Override
     public void updateStatusPaymentType(StatusPaymentType statusPaymentType, UUID externalId) {
-        logRepository.info(UpdateBillingByHubUsecase.class, LogCode.LogCodeInfo._0035);
+        logRepository.info(UpdateBillingByHubUsecase.class, LogCode.LogCodeInfo._0013);
         Order order = orderRepository.updateStatusPaymentType(externalId, statusPaymentType);
 
         if (StatusPaymentType.PAID == statusPaymentType) {
@@ -32,6 +32,6 @@ public class UpdateBillingByHubUsecase implements UpdateBillingByHub {
         if (StatusPaymentType.REJECTED == statusPaymentType) {
             orderRepository.updateStatus(order.getId(), StatusType.FINISHED);
         }
-        logRepository.info(UpdateBillingByHubUsecase.class, LogCode.LogCodeInfo._0036);
+        logRepository.info(UpdateBillingByHubUsecase.class, LogCode.LogCodeInfo._0014);
     }
 }
