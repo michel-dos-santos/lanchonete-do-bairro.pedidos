@@ -28,21 +28,6 @@ spec:
             limits:
               cpu: 1
           env:
-            - name: DB_URL
-              valueFrom:
-                secretKeyRef:
-                  name: dynamic-secrets-pedidos
-                  key: DB_URL
-            - name: DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: dynamic-secrets-pedidos
-                  key: DB_USER
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: dynamic-secrets-pedidos
-                  key: DB_PASSWORD
             - name: DB_HOST
               valueFrom:
                 secretKeyRef:
@@ -53,11 +38,21 @@ spec:
                 secretKeyRef:
                   name: dynamic-secrets-pedidos
                   key: DB_PORT
-            - name: DB_NAME
+            - name: DB_DATABASE
               valueFrom:
                 secretKeyRef:
                   name: dynamic-secrets-pedidos
-                  key: DB_NAME
+                  key: DB_DATABASE
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: dynamic-secrets-pedidos
+                  key: DB_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: dynamic-secrets-pedidos
+                  key: DB_PASSWORD
             - name: API_BILLING_URL
               valueFrom:
                 secretKeyRef:
